@@ -1,0 +1,39 @@
+﻿@model List<VacationManagementSystem.Models.BonusDays>
+
+<div class="container">
+    <h2 class="mb-4">Manage Bonus Days</h2>
+
+    <a asp-action="AddBonusDay" class="btn btn-primary mb-3">Add Bonus Day</a>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Bonus Day ID</th>
+                        <th>Employee ID</th>
+                        <th>Year</th>
+                        <th>Days</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var bonusDay in Model)
+
+                    {
+                        <tr>
+                            <td>@bonusDay.BonusDaysId</td>
+                            <td>@bonusDay.EmployeeId</td>
+                            <td>@bonusDay.Year</td>
+                            <td>@bonusDay.Days</td>
+                            <td>
+                                <a asp-action="EditBonusDay" asp-route-id="@bonusDay.BonusDaysId" class="btn btn-sm btn-warning">Edit</a>
+                                <a asp-action="DeleteBonusDay" asp-route-id="@bonusDay.BonusDaysId" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

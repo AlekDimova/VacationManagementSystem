@@ -1,0 +1,46 @@
+﻿@model List<VacationManagementSystem.Models.LeaveRequest>
+
+<div class="container">
+    <h2 class="mb-4">Manage Leave Requests</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Employee ID</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Leave Type</th>
+                        <th>Status</th>
+                        <th>Reason</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var request in Model)
+
+                    {
+                        <tr>
+                            <td>@request.LeaveRequestId</td>
+                            <td>@request.EmployeeId</td>
+                            <td>@request.StartDate.ToShortDateString()</td>
+                            <td>@request.EndDate.ToShortDateString()</td>
+                            <td>@request.LeaveType</td>
+                            <td>@request.Status</td>
+                            <td>@request.Reason</td>
+                            <td>
+                                @if (request.Status == "Pending")
+
+                                {
+                                    <a asp-action="ApproveLeave" asp-route-id="@request.LeaveRequestId" class="btn btn-success btn-sm">Approve</a>
+                                    <a asp-action="RejectLeave" asp-route-id="@request.LeaveRequestId" class="btn btn-danger btn-sm">Reject</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

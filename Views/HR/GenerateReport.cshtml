@@ -1,0 +1,31 @@
+﻿@model List<VacationManagementSystem.Models.LeaveRequest>
+
+<h2>Leave Requests Report</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Request ID</th>
+            <th>Employee ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Leave Type</th>
+            <th>Status</th>
+            <th>Reason</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.LeaveRequestId</td>
+                <td>@request.EmployeeId</td>
+                <td>@request.StartDate.ToShortDateString()</td>
+                <td>@request.EndDate.ToShortDateString()</td>
+                <td>@request.LeaveType</td>
+                <td>@request.Status</td>
+                <td>@request.Reason</td>
+            </tr>
+        }
+    </tbody>
+</table>

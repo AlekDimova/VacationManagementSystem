@@ -1,0 +1,21 @@
+﻿@model VacationManagementSystem.Models.LeaveBalance
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title mb-4">Your Leave Balance</h2>
+
+            @if (Model != null)
+            {
+                <p class="card-text">Annual Leave Days: @Model.AnnualLeaveDays</p>
+                <p class="card-text">Bonus Leave Days: @Model.BonusLeaveDays</p>
+            }
+            else
+            {
+                <p class="card-text">Leave balance not found.</p>
+            }
+
+            <a asp-action="RequestLeave" class="btn btn-primary mt-3">Request Leave</a>
+        </div>
+    </div>
+</div>
